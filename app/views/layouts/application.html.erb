@@ -9,6 +9,17 @@
   </head>
 
   <body>
+    <%flash.each do |message_type, message|%>
+      <%= content_tag(:div, message)%>
+    <%end%>
+
+    <% if logged_in? %>
+      <%= "Ulogiran"%>
+      <%= link_to "Sign out", sessions_new_path, method: :delete %>
+    <%else%>
+      <%= link_to "Sign in", sessions_new_path %>
+    <%end%>
     <%= yield %>
+    <%= debug(params) if Rails.env.development?%>
   </body>
 </html>
