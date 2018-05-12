@@ -2,6 +2,8 @@ class User < ApplicationRecord
   before_create :set_remember
   has_secure_password
 
+  has_many :posts, dependent: :destroy
+
   def set_remember
     self.remember_token = Digest::SHA1.hexdigest(SecureRandom.urlsafe_base64.to_s)
   end

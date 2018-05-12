@@ -1,0 +1,6 @@
+<h1>List of posts:</h1>
+<% @list.each do |post|%>
+  <%= usermail(post.user_id) if logged_in?%>
+  <%= post.content%>
+  <br>
+<%end%>

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       if @user.authenticate(params[:session][:password])
         flash[:email] = "Welcome"
         sign_in(@user)
-        redirect_to new_user_path
+        redirect_to root_url
       else
         flash.now[:email] = "Bad password"
         render 'new'
